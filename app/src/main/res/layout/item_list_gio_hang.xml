@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/view_bg_edit"
+        android:padding="5dp"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/check"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/img_list_gio"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txt_tensp_listgio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ao sieu nhan"/>
+
+            <TextView
+                android:id="@+id/txt_giatien_listgio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2000.000 vnd"
+                android:textColor="#F42020"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_giam"
+                    android:layout_width="30dp"
+                    android:text="-"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+
+                    android:layout_height="34dp"/>
+                <TextView
+                    android:id="@+id/txt_soluong"
+                    android:layout_width="30dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:background="@drawable/view_bg_edit"
+                    android:text="1"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_tang"
+                    android:layout_width="30dp"
+                    android:layout_gravity="center"
+                    android:text="+"
+                    android:layout_height="34dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="ProFile"
+            android:paddingLeft="20dp"
+            android:textSize="25dp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+
+            android:layout_toLeftOf="@id/icon_mess"
+            android:src="@drawable/baseline_shopping_cart_24" />
+
+        <ImageView
+            android:id="@+id/icon_mess"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="14dp"
+
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/conversation" />
+    </RelativeLayout>
+
+</RelativeLayout>
