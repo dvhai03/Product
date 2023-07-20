@@ -27,6 +27,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 
 public class ChoXacNhanFragment extends Fragment {
+    private   ListDonHangAdapter adapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class ChoXacNhanFragment extends Fragment {
         String id_user =  i.getStringExtra("id_user");
         ListView lv = view.findViewById(R.id.lv_chuaxacnhan);
         List<DonHang> donHang1 = new ArrayList<>();
-        ListDonHangAdapter adapter = new ListDonHangAdapter(donHang1,"Chờ xác nhận",id_user);
+         adapter = new ListDonHangAdapter(donHang1,"Chờ xác nhận",id_user);
         lv.setAdapter(adapter);
         SanPhamService sanPhamService = new SanPhamService();
         sanPhamService.listDonHang(id_user,"Chưa xác nhận").subscribeOn(Schedulers.newThread())
@@ -60,6 +61,7 @@ public class ChoXacNhanFragment extends Fragment {
                         Log.d("DEBUG","Fail"+e.getMessage());
                     }
                 });
+        adapter.notifyDataSetInvalidated();
         super.onViewCreated(view, savedInstanceState);
     }
 }

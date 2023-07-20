@@ -3,93 +3,102 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-   >
+    android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/ed_emailr"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/view_bg_edit"
-        android:hint="Email"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="36dp"
+        android:orientation="vertical"
+        android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"
-        app:layout_constraintWidth_percent=".8" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/ed_name"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/baseline_email_24"
+            app:startIconTint="#0099ff"
+            android:textColorHint="#0099ff">
 
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/view_bg_edit"
-        android:hint="Ho va ten"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:layout_marginTop="20dp"
-        android:paddingBottom="10dp"
-        android:textSize="16sp"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias=".5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_emailr"
-        app:layout_constraintWidth_percent=".8" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_emailr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/matkhaur"
-        android:layout_width="0dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/view_bg_edit"
-        android:layout_height="wrap_content"
-        app:layout_constraintVertical_bias="0"
-        android:hint="Matkhau"
-        android:textSize="16sp"
-        android:paddingTop="10dp"
-        android:paddingLeft="20dp"
-        android:paddingBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_name"
-        app:layout_constraintWidth_percent=".8" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#0099ff"
+            app:startIconDrawable="@drawable/baseline_person_24"
+            app:startIconTint="#0099ff"
+            app:passwordToggleTint="#0099ff">
 
-    <EditText
-        android:id="@+id/matkhau2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/view_bg_edit"
-        android:hint="Nhap lại mat khau"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        app:layout_constraintVertical_bias="0"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matkhaur"
-        app:layout_constraintWidth_percent=".8" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập họ và tên"
+                android:inputType="textPersonName"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#0099ff"
+            app:startIconDrawable="@drawable/baseline_lock_24"
+            app:startIconTint="#0099ff"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="#0099ff">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/matkhaur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mật khẩu mới"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#0099ff"
+            app:passwordToggleEnabled="true"
+            app:startIconDrawable="@drawable/baseline_lock_24"
+            app:startIconTint="#0099ff"
+            app:passwordToggleTint="#0099ff">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/matkhau2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mật khẩu xác nhận"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_reg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/white"
+        android:background="@drawable/background_btn"
         android:text="Sign Up"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/view_bg_button"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias=".9"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:layout_constraintWidth_percent=".8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

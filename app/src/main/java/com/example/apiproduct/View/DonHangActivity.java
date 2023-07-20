@@ -25,6 +25,7 @@ public class DonHangActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DonHangActivity.this.finish();
+
             }
         });
 

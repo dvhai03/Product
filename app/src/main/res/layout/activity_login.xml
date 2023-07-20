@@ -5,69 +5,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-
-    <EditText
-        android:id="@+id/ed_email"
-
-        android:layout_width="0dp"
-        android:background="@drawable/view_bg_edit"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ed_email1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent=".8"
-        android:textSize="16sp"
-        android:paddingTop="10dp"
-        android:paddingLeft="20dp"
-        android:paddingBottom="10dp"
-        app:layout_constraintVertical_bias=".1"
-        app:layout_constraintHorizontal_bias=".5"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:hint="Email"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColorHint="#0099ff"
+        app:boxStrokeColor="#0099ff"
+        app:endIconMode="clear_text"
+        app:hintTextColor="#0099ff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/baseline_email_24"
+        app:startIconTint="#0099ff">
 
-    <EditText
-        android:id="@+id/matkhau"
-        android:layout_width="0dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/view_bg_edit"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:padding="16dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/matkhau1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintVertical_bias="0"
-        android:hint="Matkhau"
-        android:textSize="16sp"
-        android:paddingTop="10dp"
-        android:paddingLeft="20dp"
-        android:paddingBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Password"
+        android:textColorHint="#0099ff"
+        app:boxStrokeColor="#0099ff"
+        app:hintTextColor="#0099ff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_email"
-        app:layout_constraintWidth_percent=".8" />
+        app:layout_constraintTop_toBottomOf="@id/ed_email1"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="#0099ff"
+        app:startIconDrawable="@drawable/baseline_lock_24"
+        app:startIconTint="#0099ff">
 
-    <Button
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/matkhau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:padding="16dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/background_btn"
+        android:text="Đăng nhập"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/view_bg_button"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias=".7"
-        app:layout_constraintWidth_percent=".8" />
+        app:layout_constraintTop_toBottomOf="@+id/chkRememberPass" />
 
-    <TextView
+    <CheckBox
+        android:id="@+id/chkRememberPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forget password"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintHorizontal_bias="1"
-
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/matkhau"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:buttonTint="#0099ff"
+        android:text="Ghi nhớ mật khẩu?"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matkhau" />
+        app:layout_constraintTop_toBottomOf="@id/matkhau1" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

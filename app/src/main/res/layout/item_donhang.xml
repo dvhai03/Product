@@ -68,6 +68,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
+                android:backgroundTint="#E6FA3627"
+                android:textColor="@color/white"
                 android:text="Hủy đơn hàng"/>
         </LinearLayout>
     </LinearLayout>

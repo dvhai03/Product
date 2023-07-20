@@ -15,13 +15,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.apiproduct.R;
 import com.example.apiproduct.Service.SignUpService;
+import com.google.android.material.textfield.TextInputEditText;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SigUpFragment extends Fragment {
-    EditText email,matkhau,hoten,matkhau2;
+    TextInputEditText email,matkhau,hoten,matkhau2;
     SignUpService signUpService;
     Button btn_reg;
     @Override

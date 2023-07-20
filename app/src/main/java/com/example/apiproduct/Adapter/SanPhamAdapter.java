@@ -13,7 +13,10 @@ import com.example.apiproduct.Model.SanPham;
 import com.example.apiproduct.R;
 import com.squareup.picasso.Picasso;
 
+
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamHolder> {
 
@@ -35,10 +38,13 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull SanPhamHolder holder, @SuppressLint("RecyclerView") int position) {
+        Locale locale = new Locale("vi", "VN");
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(locale);
+        String giatien = numberFormat.format(sanPhamList.get(position).getGiatien());
         Picasso.get().load("http://192.168.1.190:3000/"+sanPhamList.get(position).getAnh()).into(holder.imageView);
         holder.tensp.setText(sanPhamList.get(position).getTensp());
         String id = sanPhamList.get(position).get_id();
-        holder.gia.setText("₫"+sanPhamList.get(position).getGiatien());
+        holder.gia.setText("₫"+giatien+" VND");
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override

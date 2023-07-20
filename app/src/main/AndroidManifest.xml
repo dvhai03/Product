@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +16,12 @@
         android:theme="@style/Theme.Product"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".Address_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Updatethongtin_Activity"
+            android:exported="false" />
         <activity
             android:name=".View.DatNhieuHang_Activity"
             android:exported="false" />

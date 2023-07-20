@@ -20,13 +20,14 @@ import androidx.fragment.app.Fragment;
 import com.example.apiproduct.Model.Login;
 import com.example.apiproduct.R;
 import com.example.apiproduct.Service.LoginService;
+import com.google.android.material.textfield.TextInputEditText;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginTabFragment extends Fragment {
-EditText email , matkhau;
+TextInputEditText email , matkhau;
 Button btn_login;
 LoginService loginService;
     @Override
@@ -36,15 +37,6 @@ LoginService loginService;
         matkhau = viewGroup.findViewById(R.id.matkhau);
         btn_login = viewGroup.findViewById(R.id.btn_login);
         loginService = new LoginService();
-        email.setTranslationX(300);
-        matkhau.setTranslationX(300);
-
-        email.setAlpha(0);
-        matkhau.setAlpha(0);
-
-        email.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(2500).start();
-        matkhau.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(2000).start();
-
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

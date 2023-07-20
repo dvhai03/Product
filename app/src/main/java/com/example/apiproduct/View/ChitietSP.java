@@ -27,8 +27,10 @@ import com.example.apiproduct.R;
 import com.example.apiproduct.Service.SanPhamService;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
@@ -40,15 +42,13 @@ import retrofit2.Response;
 
 public class ChitietSP extends AppCompatActivity {
     SanPhamService apiService;
-   TextView tensp , mota,giattien;
-   Button btn_addgio;
-   Button btn_thanhtoan;
-  String anh,namesp,idsp;
+   TextView tensp , mota,giattien,txt ;
+   Button btn_addgio,btn_thanhtoan;
+  String anh,namesp,idsp,id_user;
   BinhluanAdapter adapter;
-  List<Binhluan> list_coment;
+   List<Binhluan> list_coment;
     int s= 1;
-    String id_user;
-    ImageView anhSp;
+    ImageView anhSp,back;
    double gia;
    SanPham1 sp;
    ListView lv_list;
@@ -61,18 +61,13 @@ public class ChitietSP extends AppCompatActivity {
 
         Intent i = getIntent();
         id_user= i.getStringExtra("id_user");
-        apiService= new SanPhamService();
         idsp = i.getStringExtra("_id");
 
-        ImageView back = findViewById(R.id.icon_out);
-        TextView txt = findViewById(R.id.txt);
+
+
         txt.setText("Chi tiết sản phẩm");
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ChitietSP.this.finish();
-            }
-        });
+
+        Onclick();
 
         apiService.getChitiet(idsp).enqueue(new Callback<SanPham>() {
             @Override
@@ -84,28 +79,15 @@ public class ChitietSP extends AppCompatActivity {
                 Picasso.get().load("http://192.168.1.190:3000/"+anh).into(anhSp);
                 tensp.setText(namesp);
                 mota.setText(response.body().getMota());
-                giattien.setText("₫"+gia+"");
+
+                giattien.setText("₫"+Fomatprice(gia)+" VND");
             }
             @Override
             public void onFailure(Call<SanPham> call, Throwable t) {
                 Log.e("Error",t.getMessage());
             }
         });
-        btn_addgio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialogadd();
-            }
-        });
-        binhluan(idsp);
 
-
-        btn_thanhtoan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              dialogdathang();
-            }
-        });
     }
     private void addgio(String id_sp,String id_user,int sl){
         apiService.addght(id_sp,id_user,sl).enqueue(new Callback<SanPham>() {
@@ -225,16 +207,27 @@ public class ChitietSP extends AppCompatActivity {
         dialog.show();
     }
     public void anhxa(){
-        btn_addgio = findViewById(R.id.btn_themgio);
-        lv_list = findViewById(R.id.lv_đanhgia);
-         anhSp= findViewById(R.id.img_sanpham);
+        //ánh xạ Text view
         tensp = findViewById(R.id.txt_tensp);
         mota = findViewById(R.id.txt_mota);
         giattien = findViewById(R.id.txt_gia);
+        txt = findViewById(R.id.txt);
+
+        //ánh xạ button
+        btn_addgio = findViewById(R.id.btn_themgio);
+        btn_thanhtoan = findViewById(R.id.btn_thanhtoan);
+
+        //ánh xạ imageView
+        anhSp= findViewById(R.id.img_sanpham);
+        back  = findViewById(R.id.icon_out);
+
+
+        lv_list = findViewById(R.id.lv_đanhgia);
         list_coment = new ArrayList<>();
         adapter = new BinhluanAdapter(list_coment);
         lv_list.setAdapter(adapter);
-        btn_thanhtoan = findViewById(R.id.btn_thanhtoan);
+
+        apiService= new SanPhamService();
     }
     public void binhluan(String id){
         apiService.listbinhluan(id)
@@ -254,6 +247,36 @@ public class ChitietSP extends AppCompatActivity {
                         Log.d("DEBUG","Fail"+e.getMessage());
                     }
                 });
+    }
+    public void Onclick(){
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChitietSP.this.finish();
+            }
+        });
+        btn_addgio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogadd();
+            }
+        });
+        binhluan(idsp);
+
+
+        btn_thanhtoan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogdathang();
+            }
+        });
+    }
+    public static String Fomatprice(double gia){
+        Locale locale = new Locale("vi", "VN");
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(locale);
+        String giatien = numberFormat.format(gia);
+        return giatien;
     }
 
 }

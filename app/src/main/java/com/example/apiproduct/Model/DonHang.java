@@ -3,6 +3,8 @@ package com.example.apiproduct.Model;
 import com.google.gson.annotations.SerializedName;
 
 public class DonHang {
+    @SerializedName("_id")
+    private String _id;
     @SerializedName("id_sanpham")
     private  SanPham1 sanpham;
     @SerializedName("id_user")
@@ -10,11 +12,20 @@ public class DonHang {
     private int soluong ;
     private  String diachi;
 
-    public DonHang(SanPham1 sanpham, ProFile proFile, int soluong, String diachi) {
+    public DonHang(String _id, SanPham1 sanpham, ProFile proFile, int soluong, String diachi) {
+        this._id = _id;
         this.sanpham = sanpham;
         this.proFile = proFile;
         this.soluong = soluong;
         this.diachi = diachi;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public SanPham1 getSanpham() {

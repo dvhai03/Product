@@ -94,10 +94,7 @@ public class DatNhieuHang_Activity extends AppCompatActivity {
            });
        }
         Toast.makeText(DatNhieuHang_Activity.this, "Dat hang thanh cong", Toast.LENGTH_SHORT).show();
-        Intent a = new Intent(getBaseContext(),GioHangActivity.class);
-        a.putExtra("id",id_user);
-        startActivity(a);
-        finish();
+       finish();
 
     }
 

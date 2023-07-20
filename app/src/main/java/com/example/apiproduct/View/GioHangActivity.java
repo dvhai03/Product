@@ -1,10 +1,13 @@
 package com.example.apiproduct.View;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,22 +44,34 @@ public class GioHangActivity extends AppCompatActivity implements QuanityListene
     String id_user;
     ArrayList<String> arrlist;
     ArrayList<String> arrlistid;
+    TextView delete, sumprice;
+    Button btn_mua;
+    ImageView btn_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gio_hang);
+        Anhxa();
         api();
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              finish();
+            }
+        });
     }
 
     @Override
     public void onQuantityChange(List<GioHang> list1) {
-        TextView delete = findViewById(R.id.txt_delete);
+
+
+
         double sum=0;
         id_user=i.getStringExtra("id");
-        TextView sumprice = findViewById(R.id.txt_sumprice);
-        arrlist= new ArrayList<String>();
-        arrlistid = new ArrayList<String>();
+
+
         for (int i =0;i<list1.size();i++){
             sum+=list1.get(i).getSanPham().getGiatien()*list1.get(i).getSoluong();
 
@@ -64,42 +79,10 @@ public class GioHangActivity extends AppCompatActivity implements QuanityListene
 
             arrlistid.add(list1.get(i).getId());
         }
-        sumprice.setText("₫"+sum);
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                for (int i = 0 ;i<list1.size();i++){
+        sumprice.setText("₫"+ChitietSP.Fomatprice(sum)+" VND");
 
-                    sanPhamService.deletegh(list1.get(i).getId()).enqueue(new Callback<SanPham>() {
-                        @Override
-                        public void onResponse(Call<SanPham> call, Response<SanPham> response) {
-                            if (response.code()==200){
-                            }
-                        }
-                        @Override
-                        public void onFailure(Call<SanPham> call, Throwable t) {
-                            Log.d("DEBUG","Fail"+t.getMessage());
-                        }
-                    });
-                }
-                api();
-                sumprice.setText("₫0");
-                Toast.makeText(GioHangActivity.this, "xoa thanh cong", Toast.LENGTH_SHORT).show();
-            }
-        });
-        Button btn_mua = findViewById(R.id.btn_dat);
-        btn_mua.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getBaseContext(),DatNhieuHang_Activity.class);
-                i.putStringArrayListExtra("id",arrlist);
-                i.putStringArrayListExtra("id_gh",arrlistid);
-                i.putExtra("id_user",id_user);
-                startActivity(i);
-
-            }
-        });
+        OnClick(list1);
     }
     public void api(){
         lv=findViewById(R.id.lv_list);
@@ -125,4 +108,75 @@ public class GioHangActivity extends AppCompatActivity implements QuanityListene
                     }
                 });
     }
+
+    public void Anhxa(){
+        delete = findViewById(R.id.txt_delete);
+        sumprice = findViewById(R.id.txt_sumprice);
+        btn_mua= findViewById(R.id.btn_dat);
+        btn_back = findViewById(R.id.out_giohang);
+        arrlist= new ArrayList<String>();
+        arrlistid = new ArrayList<String>();
+    }
+
+    public void OnClick(List<GioHang> list1){
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                open(list1);
+            }
+        });
+
+        btn_mua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getBaseContext(),DatNhieuHang_Activity.class);
+                i.putStringArrayListExtra("id",arrlist);
+                i.putStringArrayListExtra("id_gh",arrlistid);
+                i.putExtra("id_user",id_user);
+                startActivity(i);
+
+            }
+        });
+
+
+    }
+    public void open(List<GioHang> list1){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Chăc chắn xóa ! ");
+
+        alertDialogBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+                for (int i = 0 ;i<list1.size();i++){
+
+                    sanPhamService.deletegh(list1.get(i).getId()).enqueue(new Callback<SanPham>() {
+                        @Override
+                        public void onResponse(Call<SanPham> call, Response<SanPham> response) {
+                            if (response.code()==200){
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<SanPham> call, Throwable t) {
+                            Log.d("DEBUG","Fail"+t.getMessage());
+                        }
+                    });
+                }
+                api();
+                sumprice.setText("₫0");
+                Toast.makeText(GioHangActivity.this, "xoa thanh cong", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+               dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+
 }

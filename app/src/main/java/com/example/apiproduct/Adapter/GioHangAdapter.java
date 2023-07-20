@@ -10,10 +10,13 @@ import android.widget.TextView;
 import com.example.apiproduct.Model.GioHang;
 import com.example.apiproduct.R;
 
+import com.example.apiproduct.View.ChitietSP;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class GioHangAdapter extends BaseAdapter {
     final List<GioHang> list;
@@ -71,11 +74,11 @@ public class GioHangAdapter extends BaseAdapter {
 
 
         Picasso.get().load("http://192.168.1.190:3000/"+gioHang.getSanPham().getAnh()).into(img);
-        txt_gia.setText(gioHang.getSanPham().getGiatien()+"");
+
+        txt_gia.setText(ChitietSP.Fomatprice(gioHang.getSanPham().getGiatien()) +" VND");
         txt_tensp.setText(gioHang.getSanPham().getTensp());
         txt_sl.setText(gioHang.getSoluong()+"");
         return itemView;
     }
-
 
 }

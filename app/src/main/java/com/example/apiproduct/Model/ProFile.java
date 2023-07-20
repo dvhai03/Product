@@ -9,11 +9,14 @@ public class ProFile {
     String email;
     @SerializedName("_id")
     String _id;
+    @SerializedName("anh")
+    String anh;
 
-    public ProFile(String hoten, String email, String _id) {
+    public ProFile(String hoten, String email, String _id, String anh) {
         this.hoten = hoten;
         this.email = email;
         this._id = _id;
+        this.anh = anh;
     }
 
     public String getHoten() {
@@ -38,5 +41,13 @@ public class ProFile {
 
     public void set_id(String _id) {
         this._id = _id;
+    }
+
+    public String getAnh() {
+        return anh;
+    }
+
+    public void setAnh(String anh) {
+        this.anh = anh;
     }
 }
