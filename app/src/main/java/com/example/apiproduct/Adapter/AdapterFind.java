@@ -8,20 +8,20 @@ import android.widget.TextView;
 
 import com.example.apiproduct.MainActivity;
 import com.example.apiproduct.Model.Binhluan;
+import com.example.apiproduct.Model.SanPham;
+import com.example.apiproduct.Model.SanPham1;
 import com.example.apiproduct.R;
-
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class BinhluanAdapter extends BaseAdapter {
-    final List<Binhluan> list;
+public class AdapterFind extends BaseAdapter {
+    private List<SanPham> list;
 
-    public BinhluanAdapter(List<Binhluan> list) {
+    public AdapterFind(List<SanPham> list) {
         this.list = list;
     }
 
-    @Override
     public int getCount() {
         return list.size();
     }
@@ -40,20 +40,16 @@ public class BinhluanAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         View itemView;
         if(view == null){
-            itemView=View.inflate(viewGroup.getContext(), R.layout.item_binhluan,null);
+            itemView=View.inflate(viewGroup.getContext(), R.layout.item_find,null);
 
         }else {
             itemView = view;
         }
-
-
-        Binhluan binhluan = list.get(i);
-        ImageView img = itemView.findViewById(R.id.img_anh);
-        TextView name = itemView.findViewById(R.id.txt_name_user);
-        TextView commen = itemView.findViewById(R.id.txt_comment);
-        Picasso.get().load(MainActivity.Apidress +binhluan.getId_sanpham().getAnh()).into(img);
-        name.setText(binhluan.getId_user().getHoten());
-        commen.setText("Chất lượng " +binhluan.getBinhluan());
+        SanPham sanPham = list.get(i);
+        ImageView img = itemView.findViewById(R.id.img_anh_find);
+        TextView name = itemView.findViewById(R.id.txt_name_find);
+        Picasso.get().load(MainActivity.Apidress +sanPham.getAnh()).into(img);
+        name.setText(sanPham.getTensp());
         return itemView;
     }
 }

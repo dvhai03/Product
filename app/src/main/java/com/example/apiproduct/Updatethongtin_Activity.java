@@ -39,7 +39,8 @@ public class Updatethongtin_Activity extends AppCompatActivity {
     private static final int REQUEST_CODE = 2;
     private static final int REQUEST_PERMISSION_CODE = 1;
     private Button btn_ok,btn_cancel;
-    private String id,name,anh,path;
+    private String id,name,anh;
+    private String path ="";
     private  UserService api;
     private static final String MIME_TYPE = "image/*";
     private TextInputEditText ed_ten;
@@ -62,7 +63,7 @@ public class Updatethongtin_Activity extends AppCompatActivity {
 
         ed_ten.setText(name);
 
-        Picasso.get().load("http://192.168.1.190:3000/"+anh).into(img);
+        Picasso.get().load(MainActivity.Apidress+anh).into(img);
         Onclick();
 
 
@@ -78,7 +79,6 @@ public class Updatethongtin_Activity extends AppCompatActivity {
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 open();
             }
         });

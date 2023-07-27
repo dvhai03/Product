@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E4E0E0"
-    tools:context=".View.DatHang_Activity">
+    android:orientation="vertical">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="650dp">
@@ -84,7 +83,7 @@
             <ListView
                 android:id="@+id/lv_listdat"
                 android:layout_width="match_parent"
-                android:layout_height="231dp"
+                android:layout_height="700dp"
                 android:layout_marginBottom="5dp" />
 
             <LinearLayout

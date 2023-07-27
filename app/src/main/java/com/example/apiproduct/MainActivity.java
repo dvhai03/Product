@@ -15,6 +15,8 @@ import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+  public static String Apidress ="http://192.168.1.190:3000/";// ở nhà
+//    public static String Apidress ="http://192.168.137.116:3000/";// ở trường
     TabLayout tabLayout;
     ViewPager viewPager;
 

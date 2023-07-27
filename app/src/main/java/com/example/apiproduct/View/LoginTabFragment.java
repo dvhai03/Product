@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 
 import com.example.apiproduct.Model.Login;
+import com.example.apiproduct.Model.ProFile;
 import com.example.apiproduct.R;
 import com.example.apiproduct.Service.LoginService;
 import com.google.android.material.textfield.TextInputEditText;
@@ -83,6 +84,8 @@ LoginService loginService;
                     @Override
                     public void onFailure(Call<Login> call, Throwable t) {
                         Toast.makeText(getContext(), "Fail", Toast.LENGTH_SHORT).show();
+
+
                         Log.e("DeBug",""+t);
                     }
                 });

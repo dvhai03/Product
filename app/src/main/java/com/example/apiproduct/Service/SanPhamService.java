@@ -20,6 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SanPhamService {
     private  static  final String BASE_URL="http://192.168.1.190:3000";
 //private  static  final String BASE_URL="http://192.168.137.116:3000";
+//private  static  final String BASE_URL="http://192.168.137.116:3000";
     private Api api;
 
     public SanPhamService(){
@@ -31,8 +32,8 @@ public class SanPhamService {
                 .create(Api.class);
     }
 
-    public Single<List<SanPham>> getSP(String tensp){
-        return api.getSP(tensp);
+    public Call<List<SanPham>> getSP(String tensp,int limit){
+        return api.getSP(tensp,limit);
     }
     public Single<List<SanPham>> Seach(String tensp){
         return api.SeachSP(tensp);

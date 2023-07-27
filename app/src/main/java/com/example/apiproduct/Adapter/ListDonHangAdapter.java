@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.apiproduct.MainActivity;
 import com.example.apiproduct.Model.Binhluan;
 import com.example.apiproduct.Model.DonHang;
 import com.example.apiproduct.Model.GioHang;
@@ -77,7 +78,7 @@ public class ListDonHangAdapter extends BaseAdapter {
         TextView soluong = itemView.findViewById(R.id.txt_soluong_donhang);
         SanPhamService api = new SanPhamService();
         TextView sum =itemView.findViewById(R.id.txt_sum_donhang);
-        Picasso.get().load("http://192.168.1.190:3000/"+donHang.getSanpham().getAnh()).into(img);
+        Picasso.get().load(MainActivity.Apidress +donHang.getSanpham().getAnh()).into(img);
         tensp.setText(donHang.getSanpham().getTensp());
         giatien.setText(ChitietSP.Fomatprice(donHang.getSanpham().getGiatien())+" VND");
         soluong.setText(donHang.getSoluong()+"");
@@ -106,6 +107,7 @@ public class ListDonHangAdapter extends BaseAdapter {
                                 public void onResponse(Call<GioHang> call, Response<GioHang> response) {
                                     if(response.code()==200){
                                         Toast.makeText(itemView.getContext(), "Huy thanh cong", Toast.LENGTH_SHORT).show();
+                                        notifyDataSetChanged();
                                     }else {
                                         Toast.makeText(itemView.getContext(), "Lỗi", Toast.LENGTH_SHORT).show();
                                     }
@@ -114,8 +116,11 @@ public class ListDonHangAdapter extends BaseAdapter {
                                 public void onFailure(Call<GioHang> call, Throwable t) {
                                     Log.e("Error",t.getMessage());
                                 }
+
                             });
+
                         }
+
                     });
 
                     alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {

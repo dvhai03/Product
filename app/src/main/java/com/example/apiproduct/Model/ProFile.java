@@ -1,8 +1,12 @@
 package com.example.apiproduct.Model;
 
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class ProFile {
+import java.io.Serializable;
+
+public class ProFile implements Serializable {
     @SerializedName("hoten")
     String hoten;
     @SerializedName("email")
@@ -11,6 +15,9 @@ public class ProFile {
     String _id;
     @SerializedName("anh")
     String anh;
+
+    public ProFile() {
+    }
 
     public ProFile(String hoten, String email, String _id, String anh) {
         this.hoten = hoten;

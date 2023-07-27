@@ -6,9 +6,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.apiproduct.MainActivity;
 import com.example.apiproduct.Model.GioHang;
 import com.example.apiproduct.R;
 
+import com.example.apiproduct.View.ChitietSP;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -53,9 +55,9 @@ public class DatHang_Adapter extends BaseAdapter {
 
             soluong.setText(sp.getSoluong()+"");
             tensp.setText(sp.getSanPham().getTensp());
-            gia.setText(sp.getSanPham().getGiatien()+"");
-            tong.setText("Tổng tiền hàng : "+sp.getSanPham().getGiatien()*Integer.parseInt(soluong.getText().toString())+"VND");
-            Picasso.get().load("http://192.168.1.190:3000/"+sp.getSanPham().getAnh()).into(img);
+            gia.setText(ChitietSP.Fomatprice(sp.getSanPham().getGiatien())+" VND");
+            tong.setText("Tổng tiền hàng : "+ChitietSP.Fomatprice(sp.getSanPham().getGiatien()*Integer.parseInt(soluong.getText().toString()))+"VND");
+            Picasso.get().load(MainActivity.Apidress +sp.getSanPham().getAnh()).into(img);
 
         return itemView;
     }

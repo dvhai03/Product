@@ -53,8 +53,7 @@ public class SigUpFragment extends Fragment {
         if (taikhoa.isEmpty()||pass.isEmpty()||checkpass.isEmpty()) {
             // EditText trống
             Toast.makeText(getContext(), "Vui lòng nhập đủ thông tin", Toast.LENGTH_SHORT).show();
-        } else if (pass.equals(checkpass)) {
-            matkhau2.setError("mật khẩu không trùng khớp");
+
         } else {
             // Kiểm tra định dạng email bằng biểu thức chính quy
             String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -66,6 +65,10 @@ public class SigUpFragment extends Fragment {
                     public void onResponse(Call call, Response response) {
                         if (response.code()==201){
                             Toast.makeText(getContext(), "Dang Ki thanh cong", Toast.LENGTH_SHORT).show();
+                            email.setText("");
+                            hoten.setText("");
+                            matkhau.setText("");
+                            matkhau2.setText("");
                         }else{
                             Toast.makeText(getContext(), "email đã được đăng kí", Toast.LENGTH_SHORT).show();
                         }

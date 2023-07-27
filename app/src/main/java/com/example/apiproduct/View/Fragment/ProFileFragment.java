@@ -168,7 +168,7 @@ public class ProFileFragment extends Fragment {
             @Override
             public void onResponse(Call<ProFile> call, Response<ProFile> response) {
                 hoten.setText(response.body().getHoten());
-                Picasso.get().load("http://192.168.1.190:3000/"+response.body().getAnh()).into(imageView);
+                Picasso.get().load(MainActivity.Apidress+response.body().getAnh()).into(imageView);
                 id =response.body().get_id();
                 name = response.body().getHoten();
                 linkanh = response.body().getAnh();

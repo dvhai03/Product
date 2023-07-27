@@ -7,6 +7,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.apiproduct.MainActivity;
 import com.example.apiproduct.Model.GioHang;
 import com.example.apiproduct.R;
 
@@ -73,7 +74,7 @@ public class GioHangAdapter extends BaseAdapter {
         });
 
 
-        Picasso.get().load("http://192.168.1.190:3000/"+gioHang.getSanPham().getAnh()).into(img);
+        Picasso.get().load(MainActivity.Apidress +gioHang.getSanPham().getAnh()).into(img);
 
         txt_gia.setText(ChitietSP.Fomatprice(gioHang.getSanPham().getGiatien()) +" VND");
         txt_tensp.setText(gioHang.getSanPham().getTensp());

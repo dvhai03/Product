@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.apiproduct.MainActivity;
 import com.example.apiproduct.Model.SanPham;
 import com.example.apiproduct.R;
 import com.squareup.picasso.Picasso;
@@ -41,7 +42,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamHolder> {
         Locale locale = new Locale("vi", "VN");
         NumberFormat numberFormat = NumberFormat.getNumberInstance(locale);
         String giatien = numberFormat.format(sanPhamList.get(position).getGiatien());
-        Picasso.get().load("http://192.168.1.190:3000/"+sanPhamList.get(position).getAnh()).into(holder.imageView);
+        Picasso.get().load(MainActivity.Apidress +sanPhamList.get(position).getAnh()).into(holder.imageView);
         holder.tensp.setText(sanPhamList.get(position).getTensp());
         String id = sanPhamList.get(position).get_id();
         holder.gia.setText("₫"+giatien+" VND");

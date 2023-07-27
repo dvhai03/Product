@@ -42,7 +42,7 @@ import retrofit2.Response;
 
 public class ChitietSP extends AppCompatActivity {
     SanPhamService apiService;
-   TextView tensp , mota,giattien,txt ;
+   TextView tensp , mota,giattien,txt,txtno;
    Button btn_addgio,btn_thanhtoan;
   String anh,namesp,idsp,id_user;
   BinhluanAdapter adapter;
@@ -212,7 +212,7 @@ public class ChitietSP extends AppCompatActivity {
         mota = findViewById(R.id.txt_mota);
         giattien = findViewById(R.id.txt_gia);
         txt = findViewById(R.id.txt);
-
+        txtno = findViewById(R.id.txt_no);
         //ánh xạ button
         btn_addgio = findViewById(R.id.btn_themgio);
         btn_thanhtoan = findViewById(R.id.btn_thanhtoan);
@@ -240,12 +240,17 @@ public class ChitietSP extends AppCompatActivity {
                             list_coment.add(bl);
                             adapter.notifyDataSetChanged();
                         }
+                        if (list_coment.size()==0){
+                            lv_list.setVisibility(View.GONE);
+                        }else {
+                            txtno.setVisibility(View.GONE);
+                        }
                     }
-
                     @Override
                     public void onError(@NonNull Throwable e) {
                         Log.d("DEBUG","Fail"+e.getMessage());
                     }
+
                 });
     }
     public void Onclick(){

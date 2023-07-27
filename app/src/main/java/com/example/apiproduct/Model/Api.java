@@ -20,7 +20,7 @@ import retrofit2.http.Query;
 public interface Api {
 
     @GET("api/sanpham")
-    Single<List<SanPham>> getSP(@Query("key") String tensp);
+    Call<List<SanPham>> getSP(@Query("key") String tensp,@Query("limit") int limit);
 
 
     @GET("api/users/profile")
@@ -33,7 +33,7 @@ public interface Api {
     Call<Login> Login(@Field("email") String email , @Field("matkhau") String matkhau);
     @FormUrlEncoded
     @POST("api/users/reg")
-    Call<Reg> Reg(@Field("email") String email , @Field("matkhau") String matkhau, @Field("vaitro") String vaitro, @Field("hoten") String hoten);
+    Call<Reg> Reg(@Field("email") String email , @Field("matkhau") String matkhau, @Field("vaitro") String vaitro, @Field("hoten") String hoten,@Query("email")String emai);
     @FormUrlEncoded
     @POST("api/users/edit/{id}")
     Call<ProFile>Doimk(@Path("id") String id, @Field("matkhau") String matkhau, @Field("matkhau1") String newmk);
@@ -73,4 +73,16 @@ public interface Api {
     @Multipart
     @POST("api/user/ed_anh/{iduser}")
     Call<ResponseBody> uploadFile(@Part MultipartBody.Part file,@Path("iduser") String id,@Part MultipartBody.Part hoten);
+
+    @FormUrlEncoded
+    @POST("api/address")
+    Call<ResponseBody> address( @Field("hoten") String hoten, @Field("id_user") String id_user,@Field("sodienthoai") String sodienthoai,@Field("diachi") String diachi);
+    @GET("api/listdress/")
+    Single<List<Diachi>> getlistdress(@Query("id") String id);
+
+    @FormUrlEncoded
+    @POST("api/post/chat")
+    Call<ResponseBody> addchat(@Field("id_user") String id_user , @Field("mess") String mess);
+    @GET("api/chat")
+    Call<List<Chat>> getlistchat();
 }

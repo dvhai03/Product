@@ -43,7 +43,7 @@ public class DatNhieuHang_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_dat_nhieu_hang);
         sumhang = findViewById(R.id.txt_sumdat);
         list = new ArrayList<>();
-       lv = findViewById(R.id.lv_listdat);
+        lv = findViewById(R.id.lv_listdat);
         lv.setAdapter(adapter);
         api= new SanPhamService();
         Intent i = getIntent();
@@ -62,7 +62,7 @@ public class DatNhieuHang_Activity extends AppCompatActivity {
                 Log.d("DEBUG","Fail"+t.getMessage());
             }
         });
-        Toast.makeText(DatNhieuHang_Activity.this, list.size()+"", Toast.LENGTH_SHORT).show();
+
 
     dat_hang= findViewById(R.id.btn_dathang);
     dat_hang.setOnClickListener(new View.OnClickListener() {
@@ -73,8 +73,15 @@ public class DatNhieuHang_Activity extends AppCompatActivity {
     });
     }
            private void dathang(){
-               for (int i = 0;i<list_id.size();i++){
-                   api.addhoadon(list_id.get(i),id_user,"Phuong tu dong phi ung hoa",list.get(i).getSoluong(),list.get(i).getSanPham().getGiatien()*list.get(i).getSoluong()).enqueue(new Callback<GioHang>() {
+//        String a="";
+//               for (int i = 0;i<list.size();i++){
+//                   a=a+"\t"+list_id_gio.get(i);
+//               }
+
+               for (int i = 0;i<list.size();i++){
+
+
+                   api.addhoadon(list.get(i).getSanPham().get_id(),id_user,"Phuong tu dong phi ung hoa",list.get(i).getSoluong(),list.get(i).getSanPham().getGiatien()*list.get(i).getSoluong()).enqueue(new Callback<GioHang>() {
                @Override
                public void onResponse(Call<GioHang> call, Response<GioHang> response) {
                }
@@ -93,9 +100,10 @@ public class DatNhieuHang_Activity extends AppCompatActivity {
                }
            });
        }
-        Toast.makeText(DatNhieuHang_Activity.this, "Dat hang thanh cong", Toast.LENGTH_SHORT).show();
+
        finish();
 
     }
+
 
 }

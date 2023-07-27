@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.apiproduct.Address_Activity;
+import com.example.apiproduct.MainActivity;
 import com.example.apiproduct.Model.GioHang;
 import com.example.apiproduct.Model.SanPham1;
 import com.example.apiproduct.R;
@@ -46,10 +47,10 @@ public class DatHang_Activity extends AppCompatActivity {
 
         txt.setText("Thanh toán");
         tensp.setText(sanp.getTensp());
-        gia.setText(sanp.getGiatien()+"");
+        gia.setText(ChitietSP.Fomatprice(sanp.getGiatien())+" VND");
         sl.setText(soluong+"");
-        sum.setText(sanp.getGiatien()*soluong+"");
-        Picasso.get().load("http://192.168.1.190:3000/"+sanp.getAnh()).into(img);
+        sum.setText(ChitietSP.Fomatprice(sanp.getGiatien()*soluong)+" VND");
+        Picasso.get().load(MainActivity.Apidress +sanp.getAnh()).into(img);
 
         Onclick();
 
@@ -96,6 +97,7 @@ public class DatHang_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getBaseContext(), Address_Activity.class);
+                i.putExtra("id",id_user);
                 startActivity(i);
             }
         });

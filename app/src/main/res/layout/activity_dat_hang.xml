@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E4E0E0"
+    android:background="#59F3ECEC"
     tools:context=".View.DatHang_Activity">
 <ScrollView
     android:layout_width="match_parent"

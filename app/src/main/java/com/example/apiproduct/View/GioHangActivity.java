@@ -70,13 +70,11 @@ public class GioHangActivity extends AppCompatActivity implements QuanityListene
 
         double sum=0;
         id_user=i.getStringExtra("id");
-
-
+        arrlistid.clear();
+        arrlist.clear();
         for (int i =0;i<list1.size();i++){
             sum+=list1.get(i).getSanPham().getGiatien()*list1.get(i).getSoluong();
-
             arrlist.add(list1.get(i).getSanPham().get_id());
-
             arrlistid.add(list1.get(i).getId());
         }
 
@@ -134,7 +132,6 @@ public class GioHangActivity extends AppCompatActivity implements QuanityListene
                 i.putStringArrayListExtra("id_gh",arrlistid);
                 i.putExtra("id_user",id_user);
                 startActivity(i);
-
             }
         });
 
@@ -178,5 +175,9 @@ public class GioHangActivity extends AppCompatActivity implements QuanityListene
         alertDialog.show();
     }
 
-
+    @Override
+    protected void onResume() {
+       gioHangAdapter.notifyDataSetInvalidated();
+        super.onResume();
+    }
 }
